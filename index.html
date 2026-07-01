@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hukuk AI & Dilekçe Asistanı</title>
+
+<style>
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #0f172a;
+    color: white;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+textarea {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #38bdf8;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.card {
+    background: #1e293b;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+    white-space: pre-wrap;
+}
+
+small {
+    color: #94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>⚖️ Hukuk AI Dilekçe Sistemi</h1>
+
+    <small>Olayı yaz (örnek: “Ev sahibim kirayı haksız artırdı ve çıkmamı istiyor”)</small>
+
+    <textarea id="input"></textarea>
+
+    <button onclick="generate()">📄 Dilekçe Oluştur</button>
+
+    <div class="card" id="result">Sonuç burada görünecek...</div>
+</div>
+
+<script>
+function generate() {
+    const input = document.getElementById("input").value;
+    const result = document.getElementById("result");
+
+    if (!input) {
+        result.innerText = "Lütfen bir durum yaz.";
+        return;
+    }
+
+    let dilekce = `
+T.C.
+İLGİLİ KURUMA
+
+KONU: Şikayet / Başvuru Dilekçesi
+
+AÇIKLAMALAR:
+${input}
+
+Bu kapsamda mağduriyetimin giderilmesi için gerekli incelemenin yapılmasını arz ederim.
+
+SONUÇ VE TALEP:
+Yukarıda açıklanan nedenlerle gerekli işlemlerin yapılmasını saygılarımla arz ederim.
+
+Tarih: ${new Date().toLocaleDateString("tr-TR")}
+
+İmza:
+......................
+`;
+
+    result.innerText = dilekce;
+}
+</script>
+
+</body>
+</html>
